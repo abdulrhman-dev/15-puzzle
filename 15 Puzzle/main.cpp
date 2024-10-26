@@ -8,6 +8,7 @@
 
 int main()
 {
+
 	Game::Board gb;
 
 	char command{};

@@ -11,8 +11,13 @@ namespace Game {
 		};
 
 		Board();
+
+		void randomize();
+
 		Position getTilePos(int value);
+
 		int& get(const Position& pos);
+
 		bool isInBounds(const Position& pos);
 		bool swapIfValid(const Position& pos1, const Position& pos2);
 		bool isSorted();

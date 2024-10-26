@@ -9,7 +9,42 @@
 using Position = Game::Board::Position;
 
 Game::Board::Board() {
-	std::shuffle(m_tiles.begin(), m_tiles.end(), Random::mt);
+	randomize();
+}
+
+void Game::Board::randomize() {
+	for (int i = 0; i < 1000; ++i) {
+		Position blankPos{ getTilePos(0) };
+		{
+			switch (Random::get(1, 4))
+			{
+			case 1:
+				swapIfValid(
+					blankPos,
+					{ blankPos.row + 1, blankPos.column }
+				);
+				break;
+			case 2:
+				swapIfValid(
+					blankPos,
+					{ blankPos.row, blankPos.column + 1 }
+				);
+				break;
+			case 3:
+				swapIfValid(
+					blankPos,
+					{ blankPos.row - 1, blankPos.column }
+				);
+				break;
+			case 4:
+				swapIfValid(
+					blankPos,
+					{ blankPos.row, blankPos.column - 1 }
+				);
+				break;
+			}
+		}
+	}
 }
 
 Position Game::Board::getTilePos(int value) {

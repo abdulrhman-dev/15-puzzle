@@ -15,7 +15,12 @@ private:
 		return std::mt19937{ ss };
 	}
 
+	
 public:
 	static inline std::mt19937 mt{ generate() };
+
+	static int get(int min, int max) {
+		return std::uniform_int_distribution{ min, max }(mt);
+	}
 };
 #endif
